@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager manager;
-
-    //public string playerName;
 
     public int currentScore;
     public int currentLevel;
     public int currentLives;
 
     public bool paused;
+
+    public List<HighScoreEntry> highScoreList;
+
+    public bool highScoresFromMainMenu;
 
     private void Awake()
     {
@@ -25,6 +29,8 @@ public class GameManager : MonoBehaviour
             currentLevel = 0;
             currentScore = 0;
             currentLives = 3;
+
+            highScoreList = new List<HighScoreEntry>();
 
             paused = false;
         }
@@ -53,7 +59,6 @@ public class GameManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
         PlayerData data = new PlayerData();
-        //data.playerName = playerName;
         data.currentScore = currentScore;
         data.currentLevel = currentLevel;
         data.currentLives = currentLives;
@@ -70,19 +75,28 @@ public class GameManager : MonoBehaviour
             FileStream file = File.Open(Application.persistentDataPath + "/playerInfo.dat", FileMode.Open);
             PlayerData data = (PlayerData)bf.Deserialize(file);
 
-            //playerName = data.playerName;
             currentLevel = data.currentLevel;
             currentScore = data.currentScore;
             currentLives = data.currentLives;
         }
     }
+
+    public void AddNewScore(string playerName, int playerScore)
+    {
+       highScoreList.Add(new HighScoreEntry { name = playerName, score = playerScore });
+    }
 }
 
+[Serializable]
 class PlayerData
 {
-    public string playerName;
-
     public int currentScore;
     public int currentLevel;
     public int currentLives;
+}
+
+[System.Serializable]
+public class Leaderboard
+{
+    public List<HighScoreEntry> list = new List<HighScoreEntry> ();
 }

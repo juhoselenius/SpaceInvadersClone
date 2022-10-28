@@ -239,7 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba2b9c8b7e3d5546a9fa0ae86bc5753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousScene: PlayerMenu
+  goBackScene: PlayerMenu
+  pauseMenu: {fileID: 0}
+  highScoreInput: {fileID: 0}
 --- !u!4 &1422240194
 Transform:
   m_ObjectHideFlags: 0
@@ -248,7 +250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422240192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 253.8655, y: 375.8053, z: -4.497209}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

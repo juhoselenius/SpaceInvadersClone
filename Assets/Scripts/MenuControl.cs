@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuControl : MonoBehaviour
 {
-    public string previousScene;
+    public string goBackScene;
     public GameObject pauseMenu;
+    public GameObject highScoreInput;
+    public GameObject highScoreSceneTryAgainButton;
 
     private void Start()
     {
@@ -16,6 +18,30 @@ public class MenuControl : MonoBehaviour
             {
                 pauseMenu.SetActive(false);
                 Time.timeScale = 1;
+            }
+        }
+
+        if(highScoreInput != null)
+        {
+            if(ScoredTopFive())
+            {
+                highScoreInput.SetActive(true);
+            }
+            else
+            {
+                highScoreInput.SetActive(false);
+            }
+        }
+
+        if(highScoreSceneTryAgainButton != null)
+        {
+            if(GameManager.manager.highScoresFromMainMenu)
+            {
+                highScoreSceneTryAgainButton.SetActive(false);
+            }
+            else
+            {
+                highScoreSceneTryAgainButton.SetActive(true);
             }
         }
     }
@@ -35,7 +61,16 @@ public class MenuControl : MonoBehaviour
 
     public void LoadHighScoreScene()
     {
-        SceneManager.LoadScene("HighScore");
+        if(SceneManager.GetActiveScene().name.CompareTo("MainMenu") == 0)
+        {
+            GameManager.manager.highScoresFromMainMenu = true;
+        }
+        else
+        {
+            GameManager.manager.highScoresFromMainMenu = false;
+        }
+
+        SceneManager.LoadScene("HighScores");
     }
 
     public void LoadClassicInstructions()
@@ -56,12 +91,13 @@ public class MenuControl : MonoBehaviour
 
     public void Back()
     {
-        SceneManager.LoadScene(previousScene);
+        SceneManager.LoadScene(goBackScene);
     }
 
     public void ToMainMenu()
     {
         ResetGameManager();
+        GameManager.manager.highScoresFromMainMenu = false;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -96,5 +132,31 @@ public class MenuControl : MonoBehaviour
         GameManager.manager.currentScore = 0;
         GameManager.manager.currentLevel = 0;
         GameManager.manager.currentLives = 3;
+    }
+
+    public void SubmitHighScore(string input)
+    {
+        GameManager.manager.AddNewScore(input, GameManager.manager.currentScore);
+        SceneManager.LoadScene("HighScores");
+    }
+
+    public bool ScoredTopFive()
+    {
+        //Debug.Log("Count: " + GameManager.manager.highScoreList.Count);
+        if(GameManager.manager.highScoreList.Count >= 5)
+        {
+            if (GameManager.manager.currentScore > GameManager.manager.highScoreList[4].score)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
     }
 }
