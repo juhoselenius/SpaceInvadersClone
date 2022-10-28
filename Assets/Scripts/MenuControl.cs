@@ -38,11 +38,6 @@ public class MenuControl : MonoBehaviour
         SceneManager.LoadScene("HighScore");
     }
 
-    public void LoadSinglePlayerModes()
-    {
-        SceneManager.LoadScene("SingleModes");
-    }
-
     public void LoadClassicInstructions()
     {
         SceneManager.LoadScene("ClassicInstructions");
@@ -50,6 +45,7 @@ public class MenuControl : MonoBehaviour
 
     public void LoadClassic()
     {
+        ResetGameManager();
         SceneManager.LoadScene("ClassicMode");
     }
 
@@ -65,6 +61,7 @@ public class MenuControl : MonoBehaviour
 
     public void ToMainMenu()
     {
+        ResetGameManager();
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -92,5 +89,12 @@ public class MenuControl : MonoBehaviour
                 pauseMenu.SetActive(true);
             }
         }
+    }
+
+    public void ResetGameManager()
+    {
+        GameManager.manager.currentScore = 0;
+        GameManager.manager.currentLevel = 0;
+        GameManager.manager.currentLives = 3;
     }
 }

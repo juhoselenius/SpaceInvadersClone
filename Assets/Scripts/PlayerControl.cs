@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -79,7 +80,11 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                // Transition to Game Over screen
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                // NEEDED: Code for the ship explosion
+
+                // Delay for the ship explosion;
+                Invoke("GameOver", 2f);
             }
 
         }
@@ -89,5 +94,11 @@ public class PlayerControl : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
         GameManager.manager.paused = false;
+    }
+
+    private void GameOver()
+    {
+        GameManager.manager.paused = false;
+        SceneManager.LoadScene("GameOver");
     }
 }

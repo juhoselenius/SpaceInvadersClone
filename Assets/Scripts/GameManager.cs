@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
     //public string playerName;
 
-    // Tämä on testausta
-
     public int currentScore;
     public int currentLevel;
     public int currentLives;
