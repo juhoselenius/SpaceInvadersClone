@@ -586,8 +586,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba2b9c8b7e3d5546a9fa0ae86bc5753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousScene: MainMenu
+  goBackScene: MainMenu
   pauseMenu: {fileID: 0}
+  highScoreInput: {fileID: 0}
+  highScoreSceneTryAgainButton: {fileID: 0}
 --- !u!4 &1422240194
 Transform:
   m_ObjectHideFlags: 0

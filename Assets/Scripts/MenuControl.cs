@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +11,7 @@ public class MenuControl : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject highScoreInput;
     public GameObject highScoreSceneTryAgainButton;
+    public GameObject loadText;
 
     private void Start()
     {
@@ -80,6 +83,11 @@ public class MenuControl : MonoBehaviour
 
     public void LoadClassic()
     {
+        SceneManager.LoadScene("ClassicMode");
+    }
+
+    public void LoadClassicWithPlayerReset()
+    {
         ResetGameManager();
         SceneManager.LoadScene("ClassicMode");
     }
@@ -137,7 +145,25 @@ public class MenuControl : MonoBehaviour
     public void SubmitHighScore(string input)
     {
         GameManager.manager.AddNewScore(input, GameManager.manager.currentScore);
+        GameManager.manager.SaveHighScores();
         SceneManager.LoadScene("HighScores");
+    }
+
+    public void SaveFromMenu()
+    {
+        GameManager.manager.Save();
+    }
+
+    public void LoadSavedFromMenu()
+    {
+        GameManager.manager.Load();
+        if (File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
+        {
+            if(loadText != null)
+            {
+                loadText.SetActive(true);
+            }
+        }
     }
 
     public bool ScoredTopFive()

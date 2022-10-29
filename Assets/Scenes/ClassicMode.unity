@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30050367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30050369}
+  - component: {fileID: 30050368}
+  m_Layer: 0
+  m_Name: UIUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &30050368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30050367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea37c0f14ae2ba74abf49780ffae5e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 186747738}
+  score: {fileID: 946553725}
+  highScore: {fileID: 1366238562}
+  lives: {fileID: 2016206590}
+--- !u!4 &30050369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30050367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 351.73746, y: 239.23279, z: -2.1335442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &45771934
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,8 +833,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ba2b9c8b7e3d5546a9fa0ae86bc5753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousScene: 
+  goBackScene: 
   pauseMenu: {fileID: 1191634242}
+  highScoreInput: {fileID: 0}
+  highScoreSceneTryAgainButton: {fileID: 0}
+  loadText: {fileID: 0}
 --- !u!4 &753485157
 Transform:
   m_ObjectHideFlags: 0
@@ -1484,6 +1535,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191634247}
     m_Modifications:
+    - target: {fileID: 1933054385229286193, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 753485156}
+    - target: {fileID: 1933054385229286193, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveFromMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1933054385229286194, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

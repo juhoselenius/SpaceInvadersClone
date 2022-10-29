@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using System;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             manager = this;
-            currentLevel = 0;
+            currentLevel = 1;
             currentScore = 0;
             currentLives = 3;
 
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        LoadHighScores();
     }
 
     // Start is called before the first frame update
@@ -66,6 +69,15 @@ public class GameManager : MonoBehaviour
         bf.Serialize(file, data);
     }
 
+    public void SaveHighScores()
+    {
+        // Saving high scores from John French (https://gamedevbeginner.com/how-to-keep-score-in-unity-with-loading-and-saving/)
+        XmlSerializer serializer = new XmlSerializer(typeof(List<HighScoreEntry>));
+        FileStream stream = new FileStream(Application.persistentDataPath + "/highscores.xml", FileMode.Create);
+        serializer.Serialize(stream, highScoreList);
+        stream.Close();
+    }
+
     public void Load()
     {
         if(File.Exists(Application.persistentDataPath + "/playerInfo.dat"))
@@ -78,6 +90,17 @@ public class GameManager : MonoBehaviour
             currentLevel = data.currentLevel;
             currentScore = data.currentScore;
             currentLives = data.currentLives;
+        }
+    }
+
+    public void LoadHighScores()
+    {
+        // Loading high scores from John French (https://gamedevbeginner.com/how-to-keep-score-in-unity-with-loading-and-saving/)
+        if (File.Exists(Application.persistentDataPath + "/highscores.xml"))
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<HighScoreEntry>));
+            FileStream stream = new FileStream(Application.persistentDataPath + "/highscores.xml", FileMode.Open);
+            highScoreList = (List<HighScoreEntry>)serializer.Deserialize(stream);
         }
     }
 
@@ -98,5 +121,5 @@ class PlayerData
 [System.Serializable]
 public class Leaderboard
 {
-    public List<HighScoreEntry> list = new List<HighScoreEntry> ();
+    public List<HighScoreEntry> list = new List<HighScoreEntry>();
 }
