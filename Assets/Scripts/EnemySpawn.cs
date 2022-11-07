@@ -46,8 +46,8 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Remaining enemies: " + remainingEnemies);
-        Debug.Log("All enemies: " + ((float)remainingEnemies / ((float)enemyColumns * (float)enemyRows)));
+        //Debug.Log("Remaining enemies: " + remainingEnemies);
+        //Debug.Log("All enemies: " + ((float)remainingEnemies / ((float)enemyColumns * (float)enemyRows)));
         counter += Time.deltaTime;
 
         //Getting the screen edge coordinates

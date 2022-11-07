@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7456694935147877140}
   - component: {fileID: 7456694935147877141}
-  - component: {fileID: 5510367060418998860}
+  - component: {fileID: 6824854756787607006}
   - component: {fileID: 864248207990699804}
   - component: {fileID: 7100689055674148249}
   m_Layer: 9
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5510367060418998860
-BoxCollider2D:
+--- !u!60 &6824854756787607006
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,9 +110,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.125, y: 0.375}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0625, y: 0.1875}
+      - {x: -0.0625, y: -0.1875}
+      - {x: 0.0625, y: -0.1875}
+      - {x: 0.0625, y: 0.1875}
 --- !u!50 &864248207990699804
 Rigidbody2D:
   serializedVersion: 4
@@ -148,3 +151,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: -1, z: 0}
   speed: 20
+  radius: 2
+  cam: {fileID: 0}
