@@ -9,6 +9,7 @@ public class MenuControl : MonoBehaviour
 {
     public string goBackScene;
     public GameObject pauseMenu;
+    public GameObject optionsMenu;
     public GameObject highScoreInput;
     public GameObject highScoreSceneTryAgainButton;
     public GameObject loadText;
@@ -24,7 +25,15 @@ public class MenuControl : MonoBehaviour
             }
         }
 
-        if(highScoreInput != null)
+        if (optionsMenu != null)
+        {
+            if (optionsMenu.activeInHierarchy)
+            {
+                optionsMenu.SetActive(false);
+            }
+        }
+
+        if (highScoreInput != null)
         {
             if(ScoredTopFive())
             {
@@ -54,6 +63,11 @@ public class MenuControl : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePauseMenu();
+            
+            if (optionsMenu.activeInHierarchy)
+            {
+                optionsMenu.SetActive(false);
+            }
         }
     }
 
@@ -81,6 +95,11 @@ public class MenuControl : MonoBehaviour
         SceneManager.LoadScene("ClassicInstructions");
     }
 
+    public void LoadCMultiplayerInstructions()
+    {
+        SceneManager.LoadScene("MultiplayerInstructions");
+    }
+
     public void LoadClassic()
     {
         SceneManager.LoadScene("ClassicMode");
@@ -90,6 +109,11 @@ public class MenuControl : MonoBehaviour
     {
         ResetGameManager();
         SceneManager.LoadScene("ClassicMode");
+    }
+
+    public void LoadOptions()
+    {
+        SceneManager.LoadScene("Options");
     }
 
     public void ExitApplication()
@@ -131,6 +155,21 @@ public class MenuControl : MonoBehaviour
             {
                 Time.timeScale = 0;
                 pauseMenu.SetActive(true);
+            }
+        }
+    }
+
+    public void ToggleOptionsMenu()
+    {
+        if (optionsMenu != null)
+        {
+            if (optionsMenu.activeInHierarchy)
+            {
+                optionsMenu.SetActive(false);
+            }
+            else
+            {
+                optionsMenu.SetActive(true);
             }
         }
     }

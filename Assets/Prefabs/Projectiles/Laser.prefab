@@ -151,5 +151,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: -1, z: 0}
   speed: 20
-  radius: 2
-  cam: {fileID: 0}

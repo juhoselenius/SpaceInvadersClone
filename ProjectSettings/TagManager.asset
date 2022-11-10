@@ -13,6 +13,10 @@ TagManager:
   - TopEnemy
   - LivesNumber
   - ScoreNumber
+  - MusicSlider
+  - SoundEffectsSlider
+  - MusicValueText
+  - SFXValueText
   layers:
   - Default
   - TransparentFX

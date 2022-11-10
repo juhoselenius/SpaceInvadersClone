@@ -210,6 +210,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1617207744}
     m_Modifications:
+    - target: {fileID: 1933054385229286193, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1422240193}
+    - target: {fileID: 1933054385229286193, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadCMultiplayerInstructions
+      objectReference: {fileID: 0}
     - target: {fileID: 1933054385229286194, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -590,6 +598,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   highScoreInput: {fileID: 0}
   highScoreSceneTryAgainButton: {fileID: 0}
+  loadText: {fileID: 0}
 --- !u!4 &1422240194
 Transform:
   m_ObjectHideFlags: 0
