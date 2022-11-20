@@ -46,8 +46,6 @@ public class EnemySpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("Remaining enemies: " + remainingEnemies);
-        //Debug.Log("All enemies: " + ((float)remainingEnemies / ((float)enemyColumns * (float)enemyRows)));
         counter += Time.deltaTime;
 
         //Getting the screen edge coordinates
@@ -56,7 +54,8 @@ public class EnemySpawn : MonoBehaviour
 
         if(GameManager.manager.paused == false)
         {
-            transform.position += movementDirection * speed.Evaluate(percentAlive) * Time.deltaTime;
+            //transform.position += movementDirection * speed.Evaluate(percentAlive) * GameManager.manager.currentLevel * Time.deltaTime;
+            transform.position += movementDirection * 5 * GameManager.manager.currentLevel * Time.deltaTime; // REMOVE THIS FROM FINAL!!!!
 
             foreach (Transform enemy in transform)
             {

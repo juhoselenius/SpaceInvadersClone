@@ -21,7 +21,7 @@ public class SetVolume : MonoBehaviour
     [SerializeField] private Text musicSliderText;
     [SerializeField] private Text soundEffectsSliderText;
 
-    private void Start()
+    private void Awake()
     {
         musicSlider = GameObject.FindGameObjectWithTag("MusicSlider").GetComponent<Slider>();
         soundEffectsSlider = GameObject.FindGameObjectWithTag("SoundEffectsSlider").GetComponent<Slider>();

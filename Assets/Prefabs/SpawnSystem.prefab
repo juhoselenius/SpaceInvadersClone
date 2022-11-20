@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5197603902224744272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5197603902224744273}
+  - component: {fileID: 5197603902224744278}
+  m_Layer: 0
+  m_Name: SpawnSystem
+  m_TagString: SpawnSystem
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5197603902224744273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197603902224744272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5197603902224744278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197603902224744272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6579abebd671da74aa97e430478f5306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyList:
+  - {fileID: 1879945559706738408, guid: 3360daa12e9ca094b99b9741f3e8a5d1, type: 3}
+  - {fileID: 1879945559706738408, guid: 3360daa12e9ca094b99b9741f3e8a5d1, type: 3}
+  - {fileID: 5416000914196581890, guid: edacbc4b24ef52d4ba59c2bf55c38edd, type: 3}
+  - {fileID: 5416000914196581890, guid: edacbc4b24ef52d4ba59c2bf55c38edd, type: 3}
+  - {fileID: 1547294411254990814, guid: 4180035eee5d0074da7b93e1c9736e34, type: 3}
+  enemyRows: 5
+  enemyColumns: 11
+  enemySpacing: 1.75
+  speed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: -3.4957035
+      outSlope: -3.4957035
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.030487804
+    - serializedVersion: 3
+      time: 1
+      value: 0.5
+      inSlope: -0.540283
+      outSlope: -0.540283
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.055966914
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyProjectile: {fileID: 7100689055674148249, guid: f3f2153ffd66ecb4f88c277f6ba15de3, type: 3}
+  enemyProjectileRate: 1
+  enemyProjectilesActive: 0
+  remainingEnemies: 0

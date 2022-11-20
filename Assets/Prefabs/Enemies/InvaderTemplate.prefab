@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1449153341654587442}
   - component: {fileID: 4347171025867951954}
   - component: {fileID: -6619081119513326709}
+  - component: {fileID: 8940273575469497209}
   m_Layer: 8
   m_Name: InvaderTemplate
   m_TagString: Untagged
@@ -130,4 +131,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteAnimationList: []
   animationTime: 1
-  score: 10
+  scoreValue: 0
+  rowValue: 0
+  columnValue: 0
+--- !u!50 &8940273575469497209
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815461297839233513}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

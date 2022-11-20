@@ -221,7 +221,7 @@ MonoBehaviour:
   sounds:
   - audioType: 1
     name: MainTheme
-    clip: {fileID: 8300000, guid: 35ac0cc11e5674e4fa4375cc06b22dc0, type: 3}
+    clip: {fileID: 8300000, guid: e1e2628b89676ba4cac7af35dc60303c, type: 3}
     volume: 1
     pitch: 1
     loop: 1

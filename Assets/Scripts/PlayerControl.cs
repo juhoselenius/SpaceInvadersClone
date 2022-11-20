@@ -11,11 +11,17 @@ public class PlayerControl : MonoBehaviour
 
     public Projectile projectile;
     public bool projectileActive;
+
+    public GameObject explosionAnimation;
+    public GameObject flashAnimation;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (flashAnimation.activeInHierarchy)
+        {
+            flashAnimation.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -58,35 +64,27 @@ public class PlayerControl : MonoBehaviour
             Vector3 gunPosition = transform.position;
             gunPosition.y += 1f;
             Instantiate(projectile, gunPosition, Quaternion.identity);
+            ShowFlash();
+            Invoke("HideFlash", 0.1f);
             projectileActive = true;
         }
+    }
+
+    public void ShowFlash()
+    {
+        flashAnimation.SetActive(true);
+    }
+
+    public void HideFlash()
+    {
+        flashAnimation.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            GameManager.manager.paused = true;
-            GameManager.manager.currentLives--;
-
-            Text livesNumber = GameObject.FindGameObjectWithTag("LivesNumber").GetComponent<Text>();
-            livesNumber.text = GameManager.manager.currentLives.ToString();
-
-            if (GameManager.manager.currentLives > 0)
-            {
-                gameObject.GetComponent<SpriteRenderer>().enabled  = false;
-                transform.position = new Vector3(0, -13, 0);
-                Invoke("SetVisible", 1f);
-            }
-            else
-            {
-                gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                // NEEDED: Code for the ship explosion
-
-                // Delay for the ship explosion;
-                Invoke("GameOver", 2f);
-            }
-
+            PlayerDeath();
         }
     }
 
@@ -100,5 +98,32 @@ public class PlayerControl : MonoBehaviour
     {
         GameManager.manager.paused = false;
         SceneManager.LoadScene("GameOver");
+    }
+
+    public void PlayerDeath()
+    {
+        GameManager.manager.paused = true;
+        GameManager.manager.currentLives--;
+
+        Text livesNumber = GameObject.FindGameObjectWithTag("LivesNumber").GetComponent<Text>();
+        livesNumber.text = GameManager.manager.currentLives.ToString();
+        Vector3 deathPosition = gameObject.transform.position;
+
+        if (GameManager.manager.currentLives > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            Instantiate(explosionAnimation, deathPosition, Quaternion.identity);
+            transform.position = new Vector3(0, -13, 0);
+            Invoke("SetVisible", 1.5f);
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            // Begin the explosion animation
+            Instantiate(explosionAnimation, deathPosition, Quaternion.identity);
+
+            // Delay for the ship explosion;
+            Invoke("GameOver", 1.5f);
+        }
     }
 }

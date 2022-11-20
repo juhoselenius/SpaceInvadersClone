@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
@@ -61,40 +62,86 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+        // Enemy hit shield
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Shield"))
         {
-            Destroy(gameObject);
-
-            GameManager.manager.currentScore += scoreValue;
-            Text scoreNumber = GameObject.FindGameObjectWithTag("ScoreNumber").GetComponent<Text>();
-            scoreNumber.text = GameManager.manager.currentScore.ToString();
-
-            GameObject spawnSystem = GameObject.FindGameObjectWithTag("SpawnSystem");
-            spawnSystem.GetComponent<EnemySpawn>().remainingEnemies--;
-
-            // Instantiate new projectile spawn system for the next enemy one row above
-            int maxRows = spawnSystem.GetComponent<EnemySpawn>().enemyRows;
-
-            foreach (Transform enemy in spawnSystem.GetComponent<Transform>())
+            Debug.Log("Enemy hit shield!");
+            Shield shield = collision.gameObject.GetComponent<Shield>();
+            
+            if (shield.CheckDamage(transform.position))
             {
-                // Checking if there's an enemy one row down --> projectile spawn won't be migrated
-                if (enemy.GetComponent<Enemy>().rowValue == rowValue - 1 &&
-                            enemy.GetComponent<Enemy>().columnValue == columnValue)
-                {
-                    return;
-                }
+                EnemyDeath();
+            }
+        }
 
-                // Checking if there are still enemies behind the destoyed one in the same column
-                for (int i = 1; i < maxRows; i++)
-                {
-                    if (enemy.GetComponent<Enemy>().rowValue == rowValue + i &&
+        // Player shot the enemy or enemy collides with the player
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            Debug.Log("Enemy hit player projectile");
+            EnemyDeath();
+        }
+
+        // Enemy reaches the bottom of the screen --> Game Over
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary"))
+        {
+            Debug.Log("Enemy hit bottom boundary");
+            GameOver();
+        }
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Shield"))
+        {
+            Debug.Log("Enemy hit shield!");
+            Shield shield = other.gameObject.GetComponent<Shield>();
+            if (shield.CheckDamage(transform.position))
+            {
+                EnemyDeath();
+            }
+        }
+    }
+
+    public void EnemyDeath()
+    {
+        Destroy(gameObject);
+
+        GameManager.manager.currentScore += scoreValue;
+        Text scoreNumber = GameObject.FindGameObjectWithTag("ScoreNumber").GetComponent<Text>();
+        scoreNumber.text = GameManager.manager.currentScore.ToString();
+
+        GameObject spawnSystem = GameObject.FindGameObjectWithTag("SpawnSystem");
+        spawnSystem.GetComponent<EnemySpawn>().remainingEnemies--;
+
+        // Instantiate new projectile spawn system for the next enemy one row above
+        int maxRows = spawnSystem.GetComponent<EnemySpawn>().enemyRows;
+
+        foreach (Transform enemy in spawnSystem.GetComponent<Transform>())
+        {
+            // Checking if there's an enemy one row down --> projectile spawn won't be migrated
+            if (enemy.GetComponent<Enemy>().rowValue == rowValue - 1 &&
                         enemy.GetComponent<Enemy>().columnValue == columnValue)
-                    {
-                        spawnSystem.GetComponent<EnemySpawn>().SetProjectileSpawn(enemy);
-                        return;
-                    }
+            {
+                return;
+            }
+
+            // Checking if there are still enemies behind the destoyed one in the same column
+            for (int i = 1; i < maxRows; i++)
+            {
+                if (enemy.GetComponent<Enemy>().rowValue == rowValue + i &&
+                    enemy.GetComponent<Enemy>().columnValue == columnValue)
+                {
+                    spawnSystem.GetComponent<EnemySpawn>().SetProjectileSpawn(enemy);
+                    return;
                 }
             }
         }
+    }
+
+    private void GameOver()
+    {
+        GameManager.manager.paused = false;
+        SceneManager.LoadScene("GameOver");
     }
 }

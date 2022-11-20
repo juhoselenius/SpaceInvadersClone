@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         data.currentLives = currentLives;
 
         bf.Serialize(file, data);
+        file.Close();
     }
 
     public void SaveHighScores()

@@ -127,7 +127,7 @@ public class Shield : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            radius = 10;
+            radius = 30;
         }
         if (other.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile") || other.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
         {

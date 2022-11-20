@@ -65,8 +65,8 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Music value: " + GetMusicValue());
-        Debug.Log("Sound Effects value: " + GetSoundEffectsValue());
+        //Debug.Log("Music value: " + GetMusicValue());
+        //Debug.Log("Sound Effects value: " + GetSoundEffectsValue());
     }
 
     public void Play(string clipName)

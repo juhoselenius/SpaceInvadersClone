@@ -458,6 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goBackScene: 
   pauseMenu: {fileID: 0}
+  optionsMenu: {fileID: 0}
   highScoreInput: {fileID: 0}
   highScoreSceneTryAgainButton: {fileID: 0}
   loadText: {fileID: 0}
