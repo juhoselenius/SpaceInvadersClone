@@ -113,6 +113,7 @@ public class PlayerControl : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             Instantiate(explosionAnimation, deathPosition, Quaternion.identity);
+            AudioManager.aManager.Play("PlayerExplosion");
             transform.position = new Vector3(0, -13, 0);
             Invoke("SetVisible", 1.5f);
         }
@@ -121,6 +122,7 @@ public class PlayerControl : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
             // Begin the explosion animation
             Instantiate(explosionAnimation, deathPosition, Quaternion.identity);
+            AudioManager.aManager.Play("PlayerExplosion");
 
             // Delay for the ship explosion;
             Invoke("GameOver", 1.5f);

@@ -102,6 +102,7 @@ public class MenuControl : MonoBehaviour
 
     public void LoadClassic()
     {
+        AudioManager.aManager.Stop("MainTheme");
         SceneManager.LoadScene("ClassicMode");
     }
 
