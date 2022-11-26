@@ -61,6 +61,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("MainTheme");
+        musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(0.51f) * 20);
     }
 
     private void Update()
@@ -89,6 +90,18 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Stop();
+    }
+
+    public void StopAll()
+    {
+        foreach (Sound sound in sounds)
+        {
+            if (sound.source.isPlaying)
+            {
+                Debug.Log(SceneManager.GetActiveScene().name + " scene stops (StopPlayingAllSounds) sound: " + sound.source.clip.name);
+                sound.source.Stop();
+            }
+        }
     }
 
     public void UpdateMixerVolume()

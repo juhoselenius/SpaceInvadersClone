@@ -59,10 +59,11 @@ public class PlayerControl : MonoBehaviour
 
     private void Shoot()
     {
-        if(!projectileActive)
+        if(!projectileActive && gameObject.GetComponent<SpriteRenderer>().enabled)
         {
             Vector3 gunPosition = transform.position;
             gunPosition.y += 1f;
+            AudioManager.aManager.Play("PlayerShoot");
             Instantiate(projectile, gunPosition, Quaternion.identity);
             ShowFlash();
             Invoke("HideFlash", 0.1f);
@@ -97,6 +98,8 @@ public class PlayerControl : MonoBehaviour
     private void GameOver()
     {
         GameManager.manager.paused = false;
+        AudioManager.aManager.StopAll();
+        AudioManager.aManager.Play("GameOver");
         SceneManager.LoadScene("GameOver");
     }
 

@@ -86,7 +86,8 @@ public class MenuControl : MonoBehaviour
         {
             GameManager.manager.highScoresFromMainMenu = false;
         }
-
+        AudioManager.aManager.StopAll();
+        AudioManager.aManager.Play("Macgyver");
         SceneManager.LoadScene("HighScores");
     }
 
@@ -102,13 +103,16 @@ public class MenuControl : MonoBehaviour
 
     public void LoadClassic()
     {
-        AudioManager.aManager.Stop("MainTheme");
+        AudioManager.aManager.StopAll();
+        AudioManager.aManager.Play("LevelMusic");
         SceneManager.LoadScene("ClassicMode");
     }
 
     public void LoadClassicWithPlayerReset()
     {
         ResetGameManager();
+        AudioManager.aManager.StopAll();
+        AudioManager.aManager.Play("LevelMusic");
         SceneManager.LoadScene("ClassicMode");
     }
 
@@ -129,8 +133,10 @@ public class MenuControl : MonoBehaviour
 
     public void ToMainMenu()
     {
+        AudioManager.aManager.StopAll();
         ResetGameManager();
         GameManager.manager.highScoresFromMainMenu = false;
+        AudioManager.aManager.Play("MainTheme");
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -186,6 +192,8 @@ public class MenuControl : MonoBehaviour
     {
         GameManager.manager.AddNewScore(input, GameManager.manager.currentScore);
         GameManager.manager.SaveHighScores();
+        AudioManager.aManager.StopAll();
+        AudioManager.aManager.Play("Macgyver");
         SceneManager.LoadScene("HighScores");
     }
 

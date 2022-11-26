@@ -221,10 +221,52 @@ MonoBehaviour:
   sounds:
   - audioType: 1
     name: MainTheme
+    clip: {fileID: 8300000, guid: 90da8af6c0eb406408aec2ef023e19b8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - audioType: 0
+    name: PlayerExplosion
+    clip: {fileID: 8300000, guid: 2e59a9b23c207514296ee61b1f8e2c88, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: EnemyShoot
+    clip: {fileID: 8300000, guid: 2960a3e8851fef64c8f5aa48e46a71d4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 0
+    name: PlayerShoot
+    clip: {fileID: 8300000, guid: c65687e6bba636f43a0c77cef15d5d7f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 1
+    name: LevelMusic
     clip: {fileID: 8300000, guid: e1e2628b89676ba4cac7af35dc60303c, type: 3}
     volume: 1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - audioType: 1
+    name: Macgyver
+    clip: {fileID: 8300000, guid: 2148d827780aac949ae2293688a6681c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - audioType: 1
+    name: GameOver
+    clip: {fileID: 8300000, guid: 910cfea2d5413a94da3573fc6e3560f5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!1 &257016691
 GameObject:

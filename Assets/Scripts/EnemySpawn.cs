@@ -158,6 +158,7 @@ public class EnemySpawn : MonoBehaviour
         {
             if (enemyProjectilesActive == 0)
             {
+                AudioManager.aManager.Play("EnemyShoot");
                 Instantiate(enemyProjectile, projectileSpawnArray[random].transform.position, Quaternion.identity);
                 enemyProjectilesActive++;
             }
@@ -166,6 +167,7 @@ public class EnemySpawn : MonoBehaviour
         {
             if (enemyProjectilesActive < 2)
             {
+                AudioManager.aManager.Play("EnemyShoot");
                 Instantiate(enemyProjectile, projectileSpawnArray[random].transform.position, Quaternion.identity);
                 enemyProjectilesActive++;
             }
