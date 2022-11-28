@@ -10,9 +10,6 @@ public class Shield : MonoBehaviour
     public BoxCollider2D bCollider;
     public int radius;
 
-    public GameObject enemyHitAnimation;
-    public GameObject playerHitAnimation;
-
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
