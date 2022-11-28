@@ -7,6 +7,9 @@ public class Projectile : MonoBehaviour
     public Vector3 direction;
     public float speed;
 
+    public GameObject enemyHitAnimation;
+    public GameObject playerHitAnimation;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +29,18 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Shield"))
         {
             Shield shield = other.gameObject.GetComponent<Shield>();
-            if(shield.CheckDamage(transform.position))
+            if (shield.CheckDamage(transform.position, gameObject))
             {
                 if (gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
                 {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    Instantiate(playerHitAnimation, transform.position, Quaternion.identity);
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>().projectileActive = false;
                 }
                 else if (gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
                 {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    Instantiate(enemyHitAnimation, transform.position, Quaternion.identity);
                     GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<EnemySpawn>().enemyProjectilesActive--;
                 }
 
@@ -50,6 +57,12 @@ public class Projectile : MonoBehaviour
             }
             else if (gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
             {
+                // If enemy projectile hits player
+                if(!(other.gameObject.layer == LayerMask.NameToLayer("Boundary")))
+                {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    Instantiate(enemyHitAnimation, transform.position, Quaternion.identity);
+                }
                 GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<EnemySpawn>().enemyProjectilesActive--;
             }
 
@@ -62,14 +75,18 @@ public class Projectile : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Shield"))
         {
             Shield shield = other.gameObject.GetComponent<Shield>();
-            if (shield.CheckDamage(transform.position))
+            if (shield.CheckDamage(transform.position, gameObject))
             {
                 if (gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
                 {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    Instantiate(playerHitAnimation, transform.position, Quaternion.identity);
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControl>().projectileActive = false;
                 }
                 else if (gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
                 {
+                    gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    Instantiate(enemyHitAnimation, transform.position, Quaternion.identity);
                     GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<EnemySpawn>().enemyProjectilesActive--;
                 }
 

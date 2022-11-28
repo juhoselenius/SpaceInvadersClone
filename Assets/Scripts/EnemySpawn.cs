@@ -54,8 +54,8 @@ public class EnemySpawn : MonoBehaviour
 
         if(GameManager.manager.paused == false)
         {
-            //transform.position += movementDirection * speed.Evaluate(percentAlive) * GameManager.manager.currentLevel * Time.deltaTime;
-            transform.position += movementDirection * 5 * GameManager.manager.currentLevel * Time.deltaTime; // REMOVE THIS FROM FINAL!!!!
+            transform.position += movementDirection * speed.Evaluate(percentAlive) * GameManager.manager.currentLevel * Time.deltaTime;
+            // transform.position += movementDirection * 5 * GameManager.manager.currentLevel * Time.deltaTime; // REMOVE THIS FROM FINAL!!!!
 
             foreach (Transform enemy in transform)
             {

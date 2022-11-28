@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Enemy hit shield!");
             Shield shield = collision.gameObject.GetComponent<Shield>();
             
-            if (shield.CheckDamage(transform.position))
+            if (shield.CheckDamage(transform.position, gameObject))
             {
                 EnemyDeath();
             }
@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Enemy hit shield!");
             Shield shield = other.gameObject.GetComponent<Shield>();
-            if (shield.CheckDamage(transform.position))
+            if (shield.CheckDamage(transform.position, gameObject))
             {
                 EnemyDeath();
             }
@@ -142,6 +142,8 @@ public class Enemy : MonoBehaviour
     private void GameOver()
     {
         GameManager.manager.paused = false;
+        AudioManager.aManager.StopAll();
+        AudioManager.aManager.Play("GameOver");
         SceneManager.LoadScene("GameOver");
     }
 }

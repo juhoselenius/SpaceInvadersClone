@@ -10,6 +10,9 @@ public class Shield : MonoBehaviour
     public BoxCollider2D bCollider;
     public int radius;
 
+    public GameObject enemyHitAnimation;
+    public GameObject playerHitAnimation;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -45,7 +48,7 @@ public class Shield : MonoBehaviour
         spriteRenderer.sprite = sprite;
     }
 
-    public bool CheckPoint(Vector3 hitPoint, out int px, out int py)
+    public bool CheckPoint(Vector3 hitPoint, GameObject collidingObject, out int px, out int py)
     {
         // Transform the point from world space to local space
         Vector3 localPoint = transform.InverseTransformPoint(hitPoint);
@@ -61,12 +64,31 @@ public class Shield : MonoBehaviour
         px = (int)((localPoint.x / bCollider.size.x) * texture.width);
         py = (int)((localPoint.y / bCollider.size.y) * texture.height);
 
-        Debug.Log("Osui koordinaatteihin: " + px + ", " + py);
-        Debug.Log("Tekstuurin alpha on: " + texture.GetPixel(px, py).a);
-
         // Return true if the pixel is not empty (not transparent)
         if (texture.GetPixel(px, py).a == 1.0)
         {
+            // Correcting the hit to the edge of the shield, if update frequency has set it inside the shield
+            if (collidingObject.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
+            {
+                Debug.Log("Koordinaatit: " + px + ", " + py);
+                while (texture.GetPixel(px, py).a == 1.0)
+                {
+                    Debug.Log("Tekstuurin alpha on koordinaateissa " + px + ", " + py + " on " + texture.GetPixel(px, py).a);
+                    py++;
+                }
+            }
+
+            // Correcting the hit to the edge of the shield, if update frequency has set it inside the shield
+            if (collidingObject.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+            {
+                Debug.Log("Koordinaatit: " + px + ", " + py);
+                while (texture.GetPixel(px, py).a == 1.0)
+                {
+                    Debug.Log("Tekstuurin alpha on koordinaateissa " + px + ", " + py + " on " + texture.GetPixel(px, py).a);
+                    py--;
+                }
+            }
+
             // Pixel is not empty.
             return true;
         }
@@ -77,18 +99,28 @@ public class Shield : MonoBehaviour
         }
     }
 
-    public bool CheckDamage(Vector3 hitPoint)
+    public bool CheckDamage(Vector3 hitPoint, GameObject collidingObject)
     {
         int px;
         int py;
 
         // Only proceed if the point maps to a non-empty pixel
-        if (!CheckPoint(hitPoint, out px, out py))
+        if (!CheckPoint(hitPoint, collidingObject, out px, out py))
         {
             return false;
         }
 
         Texture2D texture = spriteRenderer.sprite.texture;
+
+        /*Vector3 hitPosition = new Vector3(px, py);
+
+        if(collidingObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+        {
+            Debug.Log("HitPoint" + hitPoint.x + ", " + hitPoint.y);
+            Debug.Log("Päivitetty HitPosition" + px + ", " + py);
+            collidingObject.GetComponent<SpriteRenderer>().enabled = false;
+            Instantiate(playerHitAnimation, hitPosition, Quaternion.identity);
+        }*/
 
         // Non-empty pixel has been hit. Take the surrounding pixels and change them as transparent.
         Circle(texture, px, py, radius, Color.clear);

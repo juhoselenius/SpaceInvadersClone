@@ -155,3 +155,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 1, z: 0}
   speed: 15
+  enemyHitAnimation: {fileID: 0}
+  playerHitAnimation: {fileID: 5251498137272379301, guid: 0ce6de1735baece46b4da9f053f0bd79, type: 3}
