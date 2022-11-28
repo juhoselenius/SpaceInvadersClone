@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public int rowValue;
     public int columnValue;
 
+    public GameObject enemyDeathAnimation;
+
 
     private void Awake()
     {
@@ -105,6 +107,7 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDeath()
     {
+        Instantiate(enemyDeathAnimation, transform.position, Quaternion.identity);
         Destroy(gameObject);
 
         GameManager.manager.currentScore += scoreValue;
