@@ -53,8 +53,7 @@ public class Shield : MonoBehaviour
         // Transform the point from world space to local space
         Vector3 localPoint = transform.InverseTransformPoint(hitPoint);
 
-        // Offset the point to the corner of the object instead of the center so
-        // we can transform to uv coordinates
+        // Offset the point to the corner of the object instead of the center so we can transform to uv coordinates
         localPoint.x += bCollider.size.x / 2;
         localPoint.y += bCollider.size.y / 2;
 
@@ -70,10 +69,8 @@ public class Shield : MonoBehaviour
             // Correcting the hit to the edge of the shield, if update frequency has set it inside the shield
             if (collidingObject.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile"))
             {
-                Debug.Log("Koordinaatit: " + px + ", " + py);
                 while (texture.GetPixel(px, py).a == 1.0)
                 {
-                    Debug.Log("Tekstuurin alpha on koordinaateissa " + px + ", " + py + " on " + texture.GetPixel(px, py).a);
                     py++;
                 }
             }
@@ -81,10 +78,8 @@ public class Shield : MonoBehaviour
             // Correcting the hit to the edge of the shield, if update frequency has set it inside the shield
             if (collidingObject.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
             {
-                Debug.Log("Koordinaatit: " + px + ", " + py);
                 while (texture.GetPixel(px, py).a == 1.0)
                 {
-                    Debug.Log("Tekstuurin alpha on koordinaateissa " + px + ", " + py + " on " + texture.GetPixel(px, py).a);
                     py--;
                 }
             }
@@ -111,16 +106,6 @@ public class Shield : MonoBehaviour
         }
 
         Texture2D texture = spriteRenderer.sprite.texture;
-
-        /*Vector3 hitPosition = new Vector3(px, py);
-
-        if(collidingObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            Debug.Log("HitPoint" + hitPoint.x + ", " + hitPoint.y);
-            Debug.Log("Päivitetty HitPosition" + px + ", " + py);
-            collidingObject.GetComponent<SpriteRenderer>().enabled = false;
-            Instantiate(playerHitAnimation, hitPosition, Quaternion.identity);
-        }*/
 
         // Non-empty pixel has been hit. Take the surrounding pixels and change them as transparent.
         Circle(texture, px, py, radius, Color.clear);
