@@ -104,6 +104,15 @@ public class Shield : MonoBehaviour
 
         Texture2D texture = spriteRenderer.sprite.texture;
 
+        if (collidingObject.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            radius = collidingObject.GetComponent<Enemy>().destructionRadius;
+        }
+        if (collidingObject.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile") || collidingObject.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
+        {
+            radius = collidingObject.GetComponent<Projectile>().destructionRadius;
+        }
+
         // Non-empty pixel has been hit. Take the surrounding pixels and change them as transparent.
         Circle(texture, px, py, radius, Color.clear);
 
@@ -137,7 +146,7 @@ public class Shield : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    /*private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
@@ -147,5 +156,5 @@ public class Shield : MonoBehaviour
         {
             radius = 5;
         }
-    }
+    }*/
 }

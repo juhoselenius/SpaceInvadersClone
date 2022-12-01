@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6619081119513326709, guid: 147e2562a71e6354397a7df8c71f1333, type: 3}
+      propertyPath: destructionRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -6619081119513326709, guid: 147e2562a71e6354397a7df8c71f1333, type: 3}
       propertyPath: spriteAnimationList.Array.size
       value: 2
       objectReference: {fileID: 0}

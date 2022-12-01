@@ -6,6 +6,7 @@ public class Projectile : MonoBehaviour
 {
     public Vector3 direction;
     public float speed;
+    public int destructionRadius;
 
     public GameObject enemyHitAnimation;
     public GameObject playerHitAnimation;

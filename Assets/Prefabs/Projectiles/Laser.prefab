@@ -151,5 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: -1, z: 0}
   speed: 20
+  destructionRadius: 5
   enemyHitAnimation: {fileID: 6336137770733399682, guid: 603cab7452cc0c449ba1148e141939dc, type: 3}
   playerHitAnimation: {fileID: 0}

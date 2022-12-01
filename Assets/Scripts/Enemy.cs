@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float animationTime = 1f;
     private int animationFrame = 0;
     public int scoreValue;
+    public int destructionRadius;
 
     public int rowValue;
     public int columnValue;
