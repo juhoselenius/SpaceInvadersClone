@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1933054385229286194, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 55
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1933054385229286194, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -309,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 1933054385250121292, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_Text
       value: Try again
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933054385250121292, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
@@ -1049,6 +1053,10 @@ PrefabInstance:
     - target: {fileID: 1933054385250121292, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_Text
       value: Main menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933054385250121292, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
