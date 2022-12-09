@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             manager = this;
-            currentLevel = 1;
+            currentLevel = 0;
             currentScore = 0;
             currentLives = 3;
 

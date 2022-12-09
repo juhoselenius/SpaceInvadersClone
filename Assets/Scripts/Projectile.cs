@@ -42,7 +42,6 @@ public class Projectile : MonoBehaviour
                 {
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     Instantiate(enemyHitAnimation, transform.position, Quaternion.identity);
-                    GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<EnemySpawn>().enemyProjectilesActive--;
                 }
 
                 Destroy(gameObject);
@@ -64,7 +63,6 @@ public class Projectile : MonoBehaviour
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     Instantiate(enemyHitAnimation, transform.position, Quaternion.identity);
                 }
-                GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<EnemySpawn>().enemyProjectilesActive--;
             }
 
             Destroy(gameObject);
@@ -88,7 +86,6 @@ public class Projectile : MonoBehaviour
                 {
                     gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     Instantiate(enemyHitAnimation, transform.position, Quaternion.identity);
-                    GameObject.FindGameObjectWithTag("SpawnSystem").GetComponent<EnemySpawn>().enemyProjectilesActive--;
                 }
 
                 Destroy(gameObject);

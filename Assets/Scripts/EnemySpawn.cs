@@ -23,8 +23,8 @@ public class EnemySpawn : MonoBehaviour
     private float counter = 0f;
 
     public Projectile enemyProjectile;
-    public float enemyProjectileRate = 1f;
-    public int enemyProjectilesActive = 0;
+    public float enemyProjectileRate;
+    public float projectileCounter;
     
     public int remainingEnemies;
     public float percentAlive => (float)remainingEnemies / ((float)enemyRows * (float)enemyColumns);
@@ -32,6 +32,8 @@ public class EnemySpawn : MonoBehaviour
     private void Awake()
     {
         levelText = GameObject.FindGameObjectWithTag("LevelText").GetComponent<Text>();
+
+        projectileCounter = 0;
 
         spawnGridPosition = transform.position;
         SpawnEnemies();
@@ -83,13 +85,18 @@ public class EnemySpawn : MonoBehaviour
             counter = 0;
         }
 
-
+        
         // Delaying the first enemy attack until 2 second mark
         if(GameManager.manager.paused == false)
         {
             if (counter > 2f)
             {
-                EnemyAttack();
+                projectileCounter += Time.deltaTime;
+                if (projectileCounter > (enemyProjectileRate * percentAlive + 0.5f) / GameManager.manager.currentLevel)
+                {
+                    EnemyAttack();
+                    projectileCounter = 0;
+                }
             }
         }
     }
@@ -137,7 +144,7 @@ public class EnemySpawn : MonoBehaviour
 
         GameManager.manager.currentLevel++;
 
-        if(levelText != null)
+        if (levelText != null)
         {
             levelText.text = "Level " + GameManager.manager.currentLevel;
         }
@@ -154,24 +161,8 @@ public class EnemySpawn : MonoBehaviour
 
         int random = Random.Range(0, projectileSpawnArray.Length - 1);
 
-        if(((float)remainingEnemies / ((float)enemyColumns * (float)enemyRows)) > 0.5)
-        {
-            if (enemyProjectilesActive == 0)
-            {
-                AudioManager.aManager.Play("EnemyShoot");
-                Instantiate(enemyProjectile, projectileSpawnArray[random].transform.position, Quaternion.identity);
-                enemyProjectilesActive++;
-            }
-        }
-        else
-        {
-            if (enemyProjectilesActive < 2)
-            {
-                AudioManager.aManager.Play("EnemyShoot");
-                Instantiate(enemyProjectile, projectileSpawnArray[random].transform.position, Quaternion.identity);
-                enemyProjectilesActive++;
-            }
-        }
+        AudioManager.aManager.Play("EnemyShoot");
+        Instantiate(enemyProjectile, projectileSpawnArray[random].transform.position, Quaternion.identity);
     }
 
     public void SetProjectileSpawn(Transform enemy)

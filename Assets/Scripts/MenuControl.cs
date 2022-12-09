@@ -133,6 +133,7 @@ public class MenuControl : MonoBehaviour
 
     public void ToMainMenu()
     {
+        Time.timeScale = 1;
         AudioManager.aManager.StopAll();
         ResetGameManager();
         GameManager.manager.highScoresFromMainMenu = false;

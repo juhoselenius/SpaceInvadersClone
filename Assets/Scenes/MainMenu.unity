@@ -468,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 1422240193}
     - target: {fileID: 1933054385229286193, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadPlayerMenu
+      value: LoadClassicInstructions
       objectReference: {fileID: 0}
     - target: {fileID: 1933054385229286194, guid: c7b82c8b5c428154ab887cfc2cf559c8, type: 3}
       propertyPath: m_Pivot.x

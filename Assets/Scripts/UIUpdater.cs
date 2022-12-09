@@ -13,7 +13,7 @@ public class UIUpdater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level.text = "Level " + (GameManager.manager.currentLevel - 1).ToString();
+        level.text = "Level " + (GameManager.manager.currentLevel).ToString();
         score.text = GameManager.manager.currentScore.ToString();
         highScore.text = GameManager.manager.highScoreList[0].score.ToString();
         lives.text = GameManager.manager.currentLives.ToString();

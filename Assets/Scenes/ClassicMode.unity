@@ -3156,5 +3156,45 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 186747738}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[0].value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[0].inSlope
+      value: -3.1571193
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[1].inSlope
+      value: -0.009472262
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[0].outSlope
+      value: -3.1571193
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[1].inWeight
+      value: 0.10469538
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[1].outSlope
+      value: -0.009472262
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileRate.m_Curve.Array.data[0].outWeight
+      value: 0.055427432
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
