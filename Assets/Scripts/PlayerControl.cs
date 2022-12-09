@@ -68,6 +68,14 @@ public class PlayerControl : MonoBehaviour
             ShowFlash();
             Invoke("HideFlash", 0.1f);
             projectileActive = true;
+            if(GameManager.manager.playerShots < 14)
+            {
+                GameManager.manager.playerShots++;
+            }
+            else
+            {
+                GameManager.manager.playerShots = 0;
+            }
         }
     }
 

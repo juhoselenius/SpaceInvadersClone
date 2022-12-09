@@ -17,6 +17,7 @@ TagManager:
   - SoundEffectsSlider
   - MusicValueText
   - SFXValueText
+  - MysteryShip
   layers:
   - Default
   - TransparentFX

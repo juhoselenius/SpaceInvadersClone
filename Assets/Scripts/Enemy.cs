@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public int scoreValue;
     public int destructionRadius;
 
+    private int[] mysteryScoreList;
+
     public int rowValue;
     public int columnValue;
 
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = spriteAnimationList[0];
+        mysteryScoreList = new int[] { 100, 50, 50, 100, 150, 100, 100, 50, 300, 100, 100, 100, 50, 150, 100 };
     }
 
     // Start is called before the first frame update
@@ -39,15 +42,31 @@ public class Enemy : MonoBehaviour
             case "TopEnemy":
                 scoreValue = 30;
                 break;
+            case "MysteryShip":
+                scoreValue = mysteryScoreList[GameManager.manager.playerShots];
+                break;
         }
         
         InvokeRepeating(nameof(AnimateSprite), animationTime, animationTime);
+
+        if(gameObject.tag == "MysteryShip")
+        {
+            Destroy(gameObject, 5f);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        // Mystery ship specific behavior
+        if(gameObject.tag == "MysteryShip")
+        {
+            // The score value for mystery ship is updated according the amount of projectiles fired by the player
+            scoreValue = mysteryScoreList[GameManager.manager.playerShots];
+
+
+            transform.position += Vector3.right * 7f * GameManager.manager.currentLevel * Time.deltaTime;
+        }
     }
 
     private void AnimateSprite()
@@ -115,29 +134,33 @@ public class Enemy : MonoBehaviour
         Text scoreNumber = GameObject.FindGameObjectWithTag("ScoreNumber").GetComponent<Text>();
         scoreNumber.text = GameManager.manager.currentScore.ToString();
 
-        GameObject spawnSystem = GameObject.FindGameObjectWithTag("SpawnSystem");
-        spawnSystem.GetComponent<EnemySpawn>().remainingEnemies--;
-
-        // Instantiate new projectile spawn system for the next enemy one row above
-        int maxRows = spawnSystem.GetComponent<EnemySpawn>().enemyRows;
-
-        foreach (Transform enemy in spawnSystem.GetComponent<Transform>())
+        // Migration of the enemy projectile spawn, if not mystery ship
+        if(gameObject.tag != "MysteryShip")
         {
-            // Checking if there's an enemy one row down --> projectile spawn won't be migrated
-            if (enemy.GetComponent<Enemy>().rowValue == rowValue - 1 &&
-                        enemy.GetComponent<Enemy>().columnValue == columnValue)
-            {
-                return;
-            }
+            GameObject spawnSystem = GameObject.FindGameObjectWithTag("SpawnSystem");
+            spawnSystem.GetComponent<EnemySpawn>().remainingEnemies--;
 
-            // Checking if there are still enemies behind the destoyed one in the same column
-            for (int i = 1; i < maxRows; i++)
+            // Instantiate new projectile spawn system for the next enemy one row above
+            int maxRows = spawnSystem.GetComponent<EnemySpawn>().enemyRows;
+
+            foreach (Transform enemy in spawnSystem.GetComponent<Transform>())
             {
-                if (enemy.GetComponent<Enemy>().rowValue == rowValue + i &&
-                    enemy.GetComponent<Enemy>().columnValue == columnValue)
+                // Checking if there's an enemy one row down --> projectile spawn won't be migrated
+                if (enemy.GetComponent<Enemy>().rowValue == rowValue - 1 &&
+                            enemy.GetComponent<Enemy>().columnValue == columnValue)
                 {
-                    spawnSystem.GetComponent<EnemySpawn>().SetProjectileSpawn(enemy);
                     return;
+                }
+
+                // Checking if there are still enemies behind the destoyed one in the same column
+                for (int i = 1; i < maxRows; i++)
+                {
+                    if (enemy.GetComponent<Enemy>().rowValue == rowValue + i &&
+                        enemy.GetComponent<Enemy>().columnValue == columnValue)
+                    {
+                        spawnSystem.GetComponent<EnemySpawn>().SetProjectileSpawn(enemy);
+                        return;
+                    }
                 }
             }
         }

@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public int currentLives;
 
+    public int playerShots;
+
     public bool paused;
 
     public List<HighScoreEntry> highScoreList;
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
             currentLevel = 0;
             currentScore = 0;
             currentLives = 3;
+
+            playerShots = 0;
 
             highScoreList = new List<HighScoreEntry>();
 

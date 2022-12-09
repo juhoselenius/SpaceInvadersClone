@@ -187,6 +187,7 @@ public class MenuControl : MonoBehaviour
         GameManager.manager.currentScore = 0;
         GameManager.manager.currentLevel = 0;
         GameManager.manager.currentLives = 3;
+        GameManager.manager.playerShots = 0;
     }
 
     public void SubmitHighScore(string input)
