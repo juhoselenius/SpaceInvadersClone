@@ -22,7 +22,7 @@ public class EnemySpawn : MonoBehaviour
 
     private float counter = 0f;
 
-    public Projectile enemyProjectile;
+    public Projectile[] enemyProjectileList;
     public float enemyProjectileRate;
     public float projectileCounter;
     
@@ -161,8 +161,22 @@ public class EnemySpawn : MonoBehaviour
 
         int random = Random.Range(0, projectileSpawnArray.Length - 1);
 
+        Debug.Log("tag: " + projectileSpawnArray[random].transform.parent.tag);
+
+        switch (projectileSpawnArray[random].transform.parent.tag)
+        {
+            case "BottomEnemy":
+                Instantiate(enemyProjectileList[0], projectileSpawnArray[random].transform.position, Quaternion.identity);
+                break;
+            case "MidEnemy":
+                Instantiate(enemyProjectileList[1], projectileSpawnArray[random].transform.position, Quaternion.identity);
+                break;
+            case "TopEnemy":
+                Instantiate(enemyProjectileList[2], projectileSpawnArray[random].transform.position, Quaternion.identity);
+                break;
+        }
+
         AudioManager.aManager.Play("EnemyShoot");
-        Instantiate(enemyProjectile, projectileSpawnArray[random].transform.position, Quaternion.identity);
     }
 
     public void SetProjectileSpawn(Transform enemy)

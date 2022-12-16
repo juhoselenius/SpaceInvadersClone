@@ -1438,6 +1438,14 @@ MonoBehaviour:
   highScoreInput: {fileID: 0}
   highScoreSceneTryAgainButton: {fileID: 0}
   loadText: {fileID: 0}
+  lastPlayedMusic:
+    audioType: 0
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &753485157
 Transform:
   m_ObjectHideFlags: 0
@@ -3220,6 +3228,22 @@ PrefabInstance:
       propertyPath: levelText
       value: 
       objectReference: {fileID: 186747738}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileList.Array.data[0]
+      value: 
+      objectReference: {fileID: 7100689055674148249, guid: 68bdc0f9a68dbae4187da89e2a0f2976, type: 3}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileList.Array.data[1]
+      value: 
+      objectReference: {fileID: 7100689055674148249, guid: f3f2153ffd66ecb4f88c277f6ba15de3, type: 3}
+    - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
+      propertyPath: enemyProjectileList.Array.data[2]
+      value: 
+      objectReference: {fileID: 7100689055674148249, guid: 733d28e5fc495e949ab1f157c4cd515b, type: 3}
     - target: {fileID: 5197603902224744278, guid: 38e2eb0757cdeb34dbe8582ee70fd45d, type: 3}
       propertyPath: enemyProjectileRate.m_Curve.Array.size
       value: 2
