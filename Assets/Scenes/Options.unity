@@ -803,7 +803,8 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1962555337}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1958247590287815352, guid: b5a4bf1215f7da64bb7caad639999e0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b5a4bf1215f7da64bb7caad639999e0d, type: 3}
 --- !u!1001 &4021736179368690089
 PrefabInstance:
@@ -997,5 +998,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4811532608755593118, guid: 739bb071db52c7749a86e21081b12e3b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 739bb071db52c7749a86e21081b12e3b, type: 3}

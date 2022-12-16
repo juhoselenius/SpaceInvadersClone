@@ -14,6 +14,8 @@ public class MenuControl : MonoBehaviour
     public GameObject highScoreSceneTryAgainButton;
     public GameObject loadText;
 
+    public Sound lastPlayedMusic;
+
     private void Start()
     {
         if (pauseMenu != null)
@@ -158,11 +160,20 @@ public class MenuControl : MonoBehaviour
             {
                 pauseMenu.SetActive(false);
                 Time.timeScale = 1;
+                if (lastPlayedMusic != null)
+                {
+                    lastPlayedMusic.source.Play();
+                }
             }
             else
             {
                 Time.timeScale = 0;
                 pauseMenu.SetActive(true);
+                if (AudioManager.aManager.GetPlayingMusic() != null)
+                {
+                    lastPlayedMusic = AudioManager.aManager.GetPlayingMusic();
+                    lastPlayedMusic.source.Pause();
+                }
             }
         }
     }

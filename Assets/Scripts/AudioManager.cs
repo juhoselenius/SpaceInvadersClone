@@ -66,8 +66,7 @@ public class AudioManager : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("Music value: " + GetMusicValue());
-        //Debug.Log("Sound Effects value: " + GetSoundEffectsValue());
+        
     }
 
     public void Play(string clipName)
@@ -102,6 +101,19 @@ public class AudioManager : MonoBehaviour
                 sound.source.Stop();
             }
         }
+    }
+
+    public Sound GetPlayingMusic()
+    {
+        foreach (Sound sound in sounds)
+        {
+            if (sound.source.isPlaying && sound.audioType == Sound.AudioTypes.music)
+            {
+                return sound;
+            }
+        }
+
+        return null;
     }
 
     public void UpdateMixerVolume()
