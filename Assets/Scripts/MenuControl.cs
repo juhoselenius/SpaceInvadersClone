@@ -136,6 +136,7 @@ public class MenuControl : MonoBehaviour
     public void ToMainMenu()
     {
         Time.timeScale = 1;
+        lastPlayedMusic.source.Play();
         AudioManager.aManager.StopAll();
         ResetGameManager();
         GameManager.manager.highScoresFromMainMenu = false;
@@ -196,6 +197,7 @@ public class MenuControl : MonoBehaviour
     public void ResetGameManager()
     {
         GameManager.manager.currentScore = 0;
+        GameManager.manager.savedScore = 0;
         GameManager.manager.currentLevel = 0;
         GameManager.manager.currentLives = 3;
         GameManager.manager.playerShots = 0;

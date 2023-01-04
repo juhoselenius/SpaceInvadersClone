@@ -57,7 +57,6 @@ public class EnemySpawn : MonoBehaviour
         if(GameManager.manager.paused == false)
         {
             transform.position += movementDirection * speed.Evaluate(percentAlive) * GameManager.manager.currentLevel * Time.deltaTime;
-            // transform.position += movementDirection * 5 * GameManager.manager.currentLevel * Time.deltaTime; // REMOVE THIS FROM FINAL!!!!
 
             foreach (Transform enemy in transform)
             {
@@ -142,7 +141,16 @@ public class EnemySpawn : MonoBehaviour
 
         remainingEnemies = enemyColumns * enemyRows;
 
-        GameManager.manager.currentLevel++;
+        if(!GameManager.manager.gameLoaded)
+        {
+            GameManager.manager.currentLevel++;
+
+            // Saving the score when level changes
+            GameManager.manager.savedScore = GameManager.manager.currentScore;
+        } else
+        {
+            GameManager.manager.gameLoaded = false;
+        }
 
         if (levelText != null)
         {

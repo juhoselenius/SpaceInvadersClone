@@ -843,7 +843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -341}
+  m_AnchoredPosition: {x: 0, y: -353}
   m_SizeDelta: {x: 600, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1107380179
@@ -1041,6 +1041,14 @@ MonoBehaviour:
   highScoreInput: {fileID: 0}
   highScoreSceneTryAgainButton: {fileID: 0}
   loadText: {fileID: 930116010}
+  lastPlayedMusic:
+    audioType: 0
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1422240194
 Transform:
   m_ObjectHideFlags: 0

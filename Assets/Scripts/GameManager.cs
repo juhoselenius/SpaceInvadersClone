@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static GameManager manager;
 
     public int currentScore;
+    public int savedScore;
     public int currentLevel;
     public int currentLives;
 
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public bool highScoresFromMainMenu;
 
+    public bool gameLoaded;
+
     private void Awake()
     {
         if(manager == null)
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
             manager = this;
             currentLevel = 0;
             currentScore = 0;
+            savedScore = 0;
             currentLives = 3;
 
             playerShots = 0;
@@ -38,6 +42,8 @@ public class GameManager : MonoBehaviour
             highScoreList = new List<HighScoreEntry>();
 
             paused = false;
+
+            gameLoaded = false;
         }
         else
         {
@@ -66,7 +72,7 @@ public class GameManager : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
         PlayerData data = new PlayerData();
-        data.currentScore = currentScore;
+        data.savedScore = savedScore;
         data.currentLevel = currentLevel;
         data.currentLives = currentLives;
 
@@ -93,8 +99,11 @@ public class GameManager : MonoBehaviour
             PlayerData data = (PlayerData)bf.Deserialize(file);
 
             currentLevel = data.currentLevel;
-            currentScore = data.currentScore;
+            savedScore = data.savedScore;
+            currentScore = data.savedScore;
             currentLives = data.currentLives;
+
+            gameLoaded = true;
         }
     }
 
@@ -118,7 +127,7 @@ public class GameManager : MonoBehaviour
 [Serializable]
 class PlayerData
 {
-    public int currentScore;
+    public int savedScore;
     public int currentLevel;
     public int currentLives;
 }
