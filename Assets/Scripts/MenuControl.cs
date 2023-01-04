@@ -238,7 +238,6 @@ public class MenuControl : MonoBehaviour
 
     public bool ScoredTopFive()
     {
-        //Debug.Log("Count: " + GameManager.manager.highScoreList.Count);
         if(GameManager.manager.highScoreList.Count >= 5)
         {
             if (GameManager.manager.currentScore > GameManager.manager.highScoreList[4].score)

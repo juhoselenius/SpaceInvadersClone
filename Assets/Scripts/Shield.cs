@@ -19,11 +19,6 @@ public class Shield : MonoBehaviour
         ResetShield();
     }
 
-    private void Update()
-    {
-
-    }
-
     public void ResetShield()
     {
         // Each shield needs a unique instance of the sprite texture since it will be modified at the source
@@ -145,16 +140,4 @@ public class Shield : MonoBehaviour
             }
         }
     }
-
-    /*private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
-        {
-            radius = 30;
-        }
-        if (other.gameObject.layer == LayerMask.NameToLayer("EnemyProjectile") || other.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile"))
-        {
-            radius = 5;
-        }
-    }*/
 }

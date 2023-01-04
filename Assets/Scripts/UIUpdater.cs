@@ -25,10 +25,4 @@ public class UIUpdater : MonoBehaviour
             highScore.text = GameManager.manager.highScoreList[0].score.ToString();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

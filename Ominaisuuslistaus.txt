@@ -1,0 +1,5 @@
+Olen testannut, että pelini toimii Windows-ympäristössä!
+
+Tavoittelen pelilläni arvosanaa: 5
+
+- 

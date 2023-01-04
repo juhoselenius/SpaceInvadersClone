@@ -21,11 +21,6 @@ public class SetVolume : MonoBehaviour
     [SerializeField] private Text musicSliderText;
     [SerializeField] private Text soundEffectsSliderText;
 
-    private void Awake()
-    {
-        
-    }
-
     private void Start()
     {
         musicSlider.value = AudioManager.aManager.GetMusicValue();

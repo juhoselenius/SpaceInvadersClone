@@ -87,7 +87,6 @@ public class Enemy : MonoBehaviour
         // Enemy hit shield
         if (collision.gameObject.layer == LayerMask.NameToLayer("Shield"))
         {
-            Debug.Log("Enemy hit shield!");
             Shield shield = collision.gameObject.GetComponent<Shield>();
             
             if (shield.CheckDamage(transform.position, gameObject))
@@ -99,14 +98,12 @@ public class Enemy : MonoBehaviour
         // Player shot the enemy or enemy collides with the player
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerProjectile") || collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("Enemy hit player projectile");
             EnemyDeath();
         }
 
         // Enemy reaches the bottom of the screen --> Game Over
         if (collision.gameObject.layer == LayerMask.NameToLayer("Boundary"))
         {
-            Debug.Log("Enemy hit bottom boundary");
             GameOver();
         }
 
@@ -116,7 +113,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Shield"))
         {
-            Debug.Log("Enemy hit shield!");
             Shield shield = other.gameObject.GetComponent<Shield>();
             if (shield.CheckDamage(transform.position, gameObject))
             {

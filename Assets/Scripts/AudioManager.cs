@@ -64,11 +64,6 @@ public class AudioManager : MonoBehaviour
         musicMixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(0.51f) * 20);
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void Play(string clipName)
     {
         Sound s = Array.Find(sounds, sound => sound.name == clipName);
