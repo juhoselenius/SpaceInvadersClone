@@ -139,8 +139,9 @@ public class EnemySpawn : MonoBehaviour
         {
             GameManager.manager.currentLevel++;
 
-            // Saving the score when level changes
+            // Saving the score and lives when level changes
             GameManager.manager.savedScore = GameManager.manager.currentScore;
+            GameManager.manager.savedLives = GameManager.manager.currentLives;
         } else
         {
             GameManager.manager.gameLoaded = false;

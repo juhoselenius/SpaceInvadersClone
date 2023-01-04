@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int savedScore;
     public int currentLevel;
     public int currentLives;
+    public int savedLives;
 
     public int playerShots;
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
             currentScore = 0;
             savedScore = 0;
             currentLives = 3;
+            savedLives = 3;
 
             playerShots = 0;
 
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour
         PlayerData data = new PlayerData();
         data.savedScore = savedScore;
         data.currentLevel = currentLevel;
-        data.currentLives = currentLives;
+        data.savedLives = savedLives;
 
         bf.Serialize(file, data);
         file.Close();
@@ -88,7 +90,8 @@ public class GameManager : MonoBehaviour
             currentLevel = data.currentLevel;
             savedScore = data.savedScore;
             currentScore = data.savedScore;
-            currentLives = data.currentLives;
+            savedLives = data.savedLives;
+            currentLives = data.savedLives;
 
             gameLoaded = true;
         }
@@ -116,7 +119,7 @@ class PlayerData
 {
     public int savedScore;
     public int currentLevel;
-    public int currentLives;
+    public int savedLives;
 }
 
 [System.Serializable]

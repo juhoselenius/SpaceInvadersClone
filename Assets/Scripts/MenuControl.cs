@@ -206,6 +206,7 @@ public class MenuControl : MonoBehaviour
         GameManager.manager.currentScore = 0;
         GameManager.manager.savedScore = 0;
         GameManager.manager.currentLevel = 0;
+        GameManager.manager.savedLives = 3;
         GameManager.manager.currentLives = 3;
         GameManager.manager.playerShots = 0;
     }

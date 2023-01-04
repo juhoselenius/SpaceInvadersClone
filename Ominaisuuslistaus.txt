@@ -2,4 +2,25 @@ Olen testannut, että pelini toimii Windows-ympäristössä!
 
 Tavoittelen pelilläni arvosanaa: 5
 
-- 
+- Pelissä on alkuvalikko.
+- Peli on toimiva ja pelattava.
+- Pelissä on vihollisia, jotka liikkuvat alaspäin.
+- Pelissä on (tuhoutuvat) suojat piilossa olemiseen.
+- Oma alus voi tuhoutua.
+- Pelin päättyessä siirrytään alkuvalikkoon tai yritetään uudelleen.
+- Pelissä on jonkinlainen UI.
+
+- Pelissä on loputtomasti tasoja, jotka vaikeutuvat aina edetessä
+	- Tämä siksi, että pelissä on arcade-hengessä high score -listaus
+- Vihollisten nopeus muuttuu tasoja edettäessä (nopeus riippuu myös siitä, kuinka monta vihollista on jäljellä)
+- Pelissä on useampia vihollistyyppejä (4)
+- Aluksella on tietty määrä elämiä (3)
+- Pelin voi pausettaa, jolloin esiin tulee pelinaikainen valikko.
+- Pelissä on alku ja loppu.
+
+- Pelin pelattavuus on hyvä ja peliä on kiva pelata.
+- Vihollisilla on animaatioita.
+- Omassa aluksessa on animaatioita.
+- Pelissä on äänet ja musiikki.
+- Pelissä on pisteytys sekä high score -listaus (high score -listaus tallentuu tiedostoon)
+- Pelissä on save/load -ominaisuus (pelaajan tila voidaan tallentaa kesken pelin, jolloin tason alussa olleet pisteet ja elämät tallentuvat)
