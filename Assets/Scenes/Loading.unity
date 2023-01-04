@@ -168,10 +168,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
+  savedScore: 0
   currentLevel: 0
   currentLives: 0
+  playerShots: 0
   paused: 0
   highScoresFromMainMenu: 0
+  gameLoaded: 0
 --- !u!1 &149966276
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +262,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2148d827780aac949ae2293688a6681c, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - audioType: 1
     name: GameOver

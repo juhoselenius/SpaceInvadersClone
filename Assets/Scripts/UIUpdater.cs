@@ -15,8 +15,15 @@ public class UIUpdater : MonoBehaviour
     {
         level.text = "Level " + (GameManager.manager.currentLevel).ToString();
         score.text = GameManager.manager.currentScore.ToString();
-        highScore.text = GameManager.manager.highScoreList[0].score.ToString();
         lives.text = GameManager.manager.currentLives.ToString();
+
+        if(GameManager.manager.highScoreList.Count == 0)
+        {
+            highScore.text = "0";
+        } else
+        {
+            highScore.text = GameManager.manager.highScoreList[0].score.ToString();
+        }
     }
 
     // Update is called once per frame

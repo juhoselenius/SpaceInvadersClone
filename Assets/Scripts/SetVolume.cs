@@ -23,10 +23,7 @@ public class SetVolume : MonoBehaviour
 
     private void Awake()
     {
-        //musicSlider = GameObject.FindGameObjectWithTag("MusicSlider").GetComponent<Slider>();
-        //soundEffectsSlider = GameObject.FindGameObjectWithTag("SoundEffectsSlider").GetComponent<Slider>();
-        //musicSliderText = GameObject.FindGameObjectWithTag("MusicValueText").GetComponent<Text>();
-        //soundEffectsSliderText = GameObject.FindGameObjectWithTag("SFXValueText").GetComponent<Text>();
+        
     }
 
     private void Start()

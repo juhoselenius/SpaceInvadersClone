@@ -136,7 +136,10 @@ public class MenuControl : MonoBehaviour
     public void ToMainMenu()
     {
         Time.timeScale = 1;
-        lastPlayedMusic.source.Play();
+        if(SceneManager.GetActiveScene().name.CompareTo("ClassicMode") == 0)
+        {
+            lastPlayedMusic.source.Play();
+        }
         AudioManager.aManager.StopAll();
         ResetGameManager();
         GameManager.manager.highScoresFromMainMenu = false;
@@ -150,6 +153,10 @@ public class MenuControl : MonoBehaviour
         {
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
+            if (lastPlayedMusic != null)
+            {
+                lastPlayedMusic.source.Play();
+            }
         }
     }
 

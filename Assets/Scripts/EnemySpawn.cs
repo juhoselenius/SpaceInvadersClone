@@ -169,8 +169,6 @@ public class EnemySpawn : MonoBehaviour
 
         int random = Random.Range(0, projectileSpawnArray.Length - 1);
 
-        Debug.Log("tag: " + projectileSpawnArray[random].transform.parent.tag);
-
         switch (projectileSpawnArray[random].transform.parent.tag)
         {
             case "BottomEnemy":
