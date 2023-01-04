@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ClassicInstructions.unity
     guid: 18cc5fe411b4b0748a5cb5ba0f818f9d
   - enabled: 1
-    path: Assets/Scenes/MultiplayerInstructions.unity
-    guid: 1dfa1d4029c87a143b1e4965fb285865
-  - enabled: 1
     path: Assets/Scenes/ClassicMode.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
